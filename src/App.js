@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter as Router,Routes,Route } from 'react-router-dom'
+import Login from './Pages/Login'
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer } from "react-toastify"
+import Register from './Pages/Register'
+// import Home from './Pages/Home'
+import Links from './Pages/Links'
+import Profile from './Pages/Profile'
+import Preview from './Pages/Preview'
+import SharPage from './Pages/SharPage'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Router>
+        <Routes>
+          {/* <Route path="/" element={<Home />} /> */}
+          <Route path='/register' element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/:username/links" element={<Links />} />
+          <Route path="/:username/profile" element={<Profile />} />
+          <Route path='/:username/preview' element={<Preview />} />
+          <Route path='/:username' element={<SharPage />} />
+        </Routes>
+      </Router>
+      <ToastContainer position="top-right"
+        autoClose={1100}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light" />
+    </>
+  )
 }
 
-export default App;
+export default App
