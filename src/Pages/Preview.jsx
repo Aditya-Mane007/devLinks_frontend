@@ -31,9 +31,7 @@ const Preview = () => {
             className="btn rounded w-auto px-5 h-[46px] flex items-center cursor-pointer text-white bg-[#633CFF] font-bold"
             onClick={(e) => {
               e.target.innerHTML = "Copied!"
-              copyLink(
-                `https://devlinks.onrender.com//${user && user.username}`
-              )
+              copyLink(`https://devlinks.onrender.com/${user && user.username}`)
             }}
           >
             Share Link
