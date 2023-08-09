@@ -4,7 +4,7 @@ import Login from './Pages/Login'
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from "react-toastify"
 import Register from './Pages/Register'
-// import Home from './Pages/Home'
+import Home from './Pages/Home'
 import Links from './Pages/Links'
 import Profile from './Pages/Profile'
 import Preview from './Pages/Preview'
@@ -16,8 +16,8 @@ const App = () => {
       <Router>
         <Routes>
           {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/" element={<Login />} />
           <Route path='/register' element={<Register />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/:username/links" element={<Links />} />
           <Route path="/:username/profile" element={<Profile />} />
           <Route path='/:username/preview' element={<Preview />} />

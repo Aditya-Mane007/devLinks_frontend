@@ -65,7 +65,7 @@ const Links = () => {
     }
 
     if (!user) {
-      navigate("/login")
+      navigate("/")
     }
 
     dispatch(getLink())

@@ -139,15 +139,15 @@ const Profile = () => {
           <div className="w-full h-auto">
             <div className="w-full h-auto px-10 my-10 flex max-md:px-5 border border-l-0 border-r-0 border-t-0 py-3">
               <div className="w-[50%]">First Name</div>
-              <div className="w-[50%]">{user.firstname}</div>
+              <div className="w-[50%]">{user && user.firstname}</div>
             </div>
             <div className="w-full h-auto px-10 my-10 flex max-md:px-5 border border-l-0 border-r-0 border-t-0 py-3">
               <div className="w-[50%]">Last Name</div>
-              <div className="w-[50%]">{user.lastname}</div>
+              <div className="w-[50%]">{user && user.lastname}</div>
             </div>
             <div className="w-full h-auto px-10 my-10 flex max-md:px-5 border border-l-0 border-r-0 border-t-0 py-3">
               <div className="w-[50%]">Email Address</div>
-              <div className="w-[50%]">{user.email}</div>
+              <div className="w-[50%]">{user && user.email}</div>
             </div>
           </div>
           <div className="flex justify-end">
@@ -161,7 +161,7 @@ const Profile = () => {
               className="logout-btn w-auto h-auto px-5 py-2 text-white bg-violet-600 flex items-center justify-end rounded cursor-pointer"
               onClick={() => {
                 dispatch(logout())
-                navigate("/login")
+                navigate("/")
               }}
             >
               logout
