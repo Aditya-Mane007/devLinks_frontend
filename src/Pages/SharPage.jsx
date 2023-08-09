@@ -15,7 +15,7 @@ const SharPage = () => {
 
   const getUserDetails = async () => {
     const response = await axios.get(
-      `https://devlinksbackend.onrender.com/api/users/getUser`
+      `https://devlinksbackend.onrender.com/api/users/getUser/${username}`
     )
 
     // console.log(response.data)
