@@ -45,7 +45,9 @@ const SharPage = () => {
             onClick={(e) => {
               e.target.innerHTML = "Copied!"
               copyLink(
-                `http://localhost:3000/${userDetails && userDetails.username}`
+                `https://devlinks.onrender.com/${
+                  userDetails && userDetails.username
+                }`
               )
             }}
           >
