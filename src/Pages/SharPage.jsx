@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Ben from "../assets/p4.jpeg"
 // import { useDispatch, useSelector } from "react-redux"
 import PreviewLinks from "../components/PreviewLinks"
@@ -10,15 +10,13 @@ const SharPage = () => {
   const [userDetails, setUserDetails] = useState()
   let { username } = useParams()
 
-  console.log(userDetails, username)
+  console.log(userDetails && userDetails, username)
+  console.log(userDetails && userDetails.links)
 
   const getUserDetails = async () => {
     const response = await axios.get(
-      `https://devlinksbackend.onrender.com//api/users/getUser/${username}`
+      `https://devlinksbackend.onrender.com/api/users/getUser/${username}`
     )
-
-    // console.log(response.data)
-    // localStorage.setItem("UserDetails", JSON.stringify(response.data))
     setUserDetails(response.data)
   }
 
@@ -27,7 +25,7 @@ const SharPage = () => {
   }
   useEffect(() => {
     getUserDetails()
-  }, [userDetails])
+  })
 
   return (
     <div className="w-full h-full bg-neutral-50 relative">
@@ -69,7 +67,7 @@ const SharPage = () => {
           </div>
         </div>
         <div className="w-full h-auto my-5">
-          <PreviewLinks links={userDetails.links} />
+          <PreviewLinks links={userDetails && userDetails.links} />
         </div>
       </div>
     </div>

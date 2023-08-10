@@ -23,50 +23,48 @@ const Profile = () => {
     if (file.size > 1024 ** 2 * 2) toast.error("File is larger than 30mb")
     else return null
   }
-  const onDrop = React.useCallback((acceptedFiles) => {
-    // const file = e.target.files[0]
+  const onDrop =
+    ((acceptedFiles) => {
+      // const file = e.target.files[0]
 
-    // if (file) {
-    //   const reader = new FileReader()
+      // if (file) {
+      //   const reader = new FileReader()
 
-    //   reader.readAsDataURL(file)
+      //   reader.readAsDataURL(file)
 
-    //   reader.onload = () => {
-    //     console.log(reader.result)
-    //   }
-    // }
+      //   reader.onload = () => {
+      //     console.log(reader.result)
+      //   }
+      // }
 
-    const reader = new FileReader()
-    console.log(acceptedFiles)
-    acceptedFiles.map((file) => {
-      reader.readAsDataURL(file)
-      reader.onload = () => {
-        setFiles({ preview: reader.result })
-      }
-    })
-    // setFiles()
-    // console.log(acceptedFiles)
-    // setFiles(
-    //   acceptedFiles.map((file) =>
-    //     Object.assign(file, {
-    //       preview: URL.createObjectURL(file)
-    //     })
-    //   )
-    // )
-  }, [])
+      const reader = new FileReader()
+      acceptedFiles.map((file) =>
+        reader.readAsDataURL(file)(
+          (reader.onload = () => {
+            setFiles({ preview: reader.result })
+          })
+        )
+      )
+      // setFiles()
+      // console.log(acceptedFiles)
+      // setFiles(
+      //   acceptedFiles.map((file) =>
+      //     Object.assign(file, {
+      //       preview: URL.createObjectURL(file)
+      //     })
+      //   )
+      // )
+    },
+    [])
 
-  const { fileRejections, getRootProps, getInputProps, isDragActive } =
-    useDropzone({
-      onDrop,
-      accept: "image/jpeg,image/png",
-      maxFiles: 1,
-      validator: fileValidator
-    })
-  {
-    fileRejections.map((errors) => {
-      errors.map((e) => toast.error(e.message))
-    })
-  }
+  const { fileRejections, getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    accept: "image/jpeg,image/png",
+    maxFiles: 1,
+    validator: fileValidator
+  })
+
+  fileRejections.map((errors) => errors.map((e) => toast.error(e.message)))
 
   const upload = () => {
     const formData = {
@@ -110,7 +108,11 @@ const Profile = () => {
             </div>
             {files && files.length !== 0 ? (
               <div className="w-[193px] h-[193px]">
-                <img src={files.preview} className="w-full h-full z-1" />
+                <img
+                  src={files.preview}
+                  className="w-full h-full z-1"
+                  alt="profile"
+                />
               </div>
             ) : (
               // <h1>Hello</h1>

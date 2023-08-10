@@ -16,7 +16,7 @@ const Preview = () => {
 
   useEffect(() => {
     dispatch(getLink())
-  }, [])
+  }, [dispatch])
   return (
     <div className="w-full h-full bg-neutral-50 relative">
       <div className="top-div bg-[#633CFF] w-full h-[375px] rounded-bl-[50px] rounded-br-[50px] py-5">
@@ -32,6 +32,7 @@ const Preview = () => {
             onClick={(e) => {
               e.target.innerHTML = "Copied!"
               copyLink(`https://devlinks.onrender.com/${user && user.username}`)
+              // copyLink(`http://localhost:3000/${user && user.username}`)
             }}
           >
             Share Link
