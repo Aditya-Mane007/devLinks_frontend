@@ -11,7 +11,7 @@ const SharPage = () => {
 
   const userDetails = JSON.parse(localStorage.getItem("UserDetails"))
 
-  // console.log(userDetails)
+  console.log(userDetails, username)
 
   const getUserDetails = async () => {
     const response = await axios.get(
