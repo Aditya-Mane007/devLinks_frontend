@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import Navbar from "../components/Navbar"
 import Screen from "../assets/images/illustration-phone-mockup.svg"
 import ImageUpload from "../assets/images/icon-upload-image.svg"

@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import Ben from "../assets/p4.jpeg"
-import { useDispatch, useSelector } from "react-redux"
+// import { useDispatch, useSelector } from "react-redux"
 import PreviewLinks from "../components/PreviewLinks"
 import { Link, useParams } from "react-router-dom"
-import { getLink } from "../features/Links/linkSlice"
+// import { getLink } from "../features/Links/linkSlice"
 import axios from "axios"
 
 const SharPage = () => {
+  const [userDetails, setUserDetails] = useState()
   let { username } = useParams()
-
-  const userDetails = JSON.parse(localStorage.getItem("UserDetails"))
 
   console.log(userDetails, username)
 
   const getUserDetails = async () => {
     const response = await axios.get(
-      `https://devlinksbackend.onrender.com/api/users/getUser/${username}`
+      `https://devlinksbackend.onrender.com//api/users/getUser/${username}`
     )
 
     // console.log(response.data)
-    localStorage.setItem("UserDetails", JSON.stringify(response.data))
+    // localStorage.setItem("UserDetails", JSON.stringify(response.data))
+    setUserDetails(response.data)
   }
 
   const copyLink = (link) => {
@@ -27,7 +27,7 @@ const SharPage = () => {
   }
   useEffect(() => {
     getUserDetails()
-  }, [])
+  }, [userDetails])
 
   return (
     <div className="w-full h-full bg-neutral-50 relative">
