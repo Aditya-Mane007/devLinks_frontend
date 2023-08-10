@@ -4,7 +4,6 @@ import Login from './Pages/Login'
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from "react-toastify"
 import Register from './Pages/Register'
-import Home from './Pages/Home'
 import Links from './Pages/Links'
 import Profile from './Pages/Profile'
 import Preview from './Pages/Preview'
