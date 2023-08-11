@@ -26,6 +26,11 @@ const SharPage = () => {
   useEffect(() => {
     getUserDetails()
   })
+  if(userDetails.length <0){
+    return(
+      <h1>Loading...</h1>
+    )
+  }
 
   return (
     <div className="w-full h-full bg-neutral-50 relative">

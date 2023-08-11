@@ -1,6 +1,6 @@
 // import React, { useEffect } from "react"
 // import { useDispatch, useSelector } from "react-redux"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 // import { reset } from "../features/Users/userSlice"
 
 const Home = () => {
