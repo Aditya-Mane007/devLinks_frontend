@@ -10,9 +10,9 @@ const Preview = () => {
   const { user } = useSelector((state) => state.user)
   const { links } = useSelector((state) => state.links)
 
-  const copyLink = (link) => {
-    navigator.clipboard.writeText(link)
-  }
+  // const copyLink = (link) => {
+  //   navigator.clipboard.writeText(link)
+  // }
 
   useEffect(() => {
     dispatch(getLink())
@@ -27,16 +27,20 @@ const Preview = () => {
           >
             Back to Editor
           </Link>
-          <div
-            className="btn rounded w-auto px-5 h-[46px] flex items-center cursor-pointer text-white bg-[#633CFF] font-bold"
-            onClick={(e) => {
-              e.target.innerHTML = "Copied!"
-              copyLink(`https://devlinks.onrender.com/${user && user.username}`)
-              // copyLink(`http://localhost:3000/${user && user.username}`)
-            }}
+          <Link
+            to={`/${user && user.username}`}
+            target="_blank"
+            className="btn rounded w-auto px-5 h-[46px] flex items-center cursor-pointer text-white bg-violet-600 font-bold"
+            // onClick={(e) => {
+            //   e.target.innerHTML = "Copied!"
+            //   copyLink(
+            //     // `https://devlinks.onrender.com/${user && user.username}`
+            //     `http://localhost:3000/${user && user.username}`
+            //   )
+            // }}
           >
             Share Link
-          </div>
+          </Link>
         </div>
       </div>
       <div className="card bg-white w-[349px] h-auto absolute top-52 left-0 right-0 m-auto px-14 py-12  rounded-[15px] border">

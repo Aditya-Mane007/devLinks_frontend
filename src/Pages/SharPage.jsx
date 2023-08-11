@@ -20,16 +20,14 @@ const SharPage = () => {
     setUserDetails(response.data)
   }
 
-  const copyLink = (link) => {
-    navigator.clipboard.writeText(link)
-  }
+  // const copyLink = (link) => {
+  //   navigator.clipboard.writeText(link)
+  // }
   useEffect(() => {
     getUserDetails()
   })
-  if(userDetails.length <0){
-    return(
-      <h1>Loading...</h1>
-    )
+  if (!userDetails) {
+    return <h1>Loading...</h1>
   }
 
   return (
@@ -43,19 +41,20 @@ const SharPage = () => {
           >
             DevLinks
           </Link>
-          <div
+          <Link
+            to={`/${userDetails && userDetails.username}`}
+            target="_blank"
             className="btn rounded w-auto px-5 h-[46px] flex items-center cursor-pointer text-[#633cff] bg-white font-bold"
-            onClick={(e) => {
-              e.target.innerHTML = "Copied!"
-              copyLink(
-                `https://devlinks.onrender.com/${
-                  userDetails && userDetails.username
-                }`
-              )
-            }}
+            // onClick={(e) => {
+            //   e.target.innerHTML = "Copied!"
+            //   copyLink(
+            //     // `https://devlinks.onrender.com/${userDetails && userDetails.username}`
+            //     `http://localhost:3000/${userDetails && userDetails.username}`
+            //   )
+            // }}
           >
             Share
-          </div>
+          </Link>
         </div>
       </div>
       <div className="card bg-white w-[349px] h-auto absolute top-52 left-0 right-0 m-auto px-14 py-12  rounded-[15px] border">
