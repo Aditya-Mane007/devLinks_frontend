@@ -29,7 +29,7 @@ const Preview = () => {
           </Link>
           <Link
             to={`/${user && user.username}`}
-            target="_blank"
+{/*             target="_blank" */}
             className="btn rounded w-auto px-5 h-[46px] flex items-center cursor-pointer text-white bg-violet-600 font-bold"
             // onClick={(e) => {
             //   e.target.innerHTML = "Copied!"
